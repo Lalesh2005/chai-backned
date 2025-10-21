@@ -2,7 +2,6 @@
   "name": "chaiaurbackned",
   "version": "1.0.0",
   "description": "learning backned",
-  "types": "module",
   "keywords": [
     "hey",
     "this",
@@ -11,12 +10,13 @@
   ],
   "license": "ISC",
   "author": "Lalesh kumar raj",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.js"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "prettier": "^3.6.2"
   }
 }
