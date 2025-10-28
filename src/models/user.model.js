@@ -33,7 +33,7 @@ const userSchema = new Schema(
             type:String, // cloudinary url
             required:true,
         },
-        coverimage:{
+        coverImage:{
             type:String, //cloudinary url
         },
 
@@ -56,7 +56,7 @@ const userSchema = new Schema(
 
 userSchema.pre("save",async function(next){
     if(!this.isModified("password")) return next();
-    this.password=await bcrypt(this.password,10);
+    this.password=await bcrypt.hash(this.password,10);
     next();
 })
 
@@ -74,7 +74,7 @@ userSchema.methods.generateAccessToken = function(){
         },
         process.env.ACCESS_TOKEN_SECRET,
         {
-            expiresIn:ACCESS_TOKEN_EXPIRY
+            expiresIn:process.env.ACCESS_TOKEN_EXPIRY
         }
 
     )
@@ -87,7 +87,7 @@ userSchema.methods.generateRefreshToken = function(){
         },
         process.env.REFRESH_TOKEN_SECRET,
         {
-            expiresIn:REFRESH_TOKEN_EXPIRY
+            expiresIn:process.env.REFRESH_TOKEN_EXPIRY
         }
 
     )
